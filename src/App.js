@@ -9,6 +9,8 @@ import { DragonsList } from "./features/dragons/DragonsList";
 
 import { SingleDragonPage } from "./features/dragons/SingleDragonPage";
 
+const params = { params: { dragonId: "5e9d058759b1ff74a7ad5f8f" } };
+
 function App() {
   return (
     <Router>
@@ -19,11 +21,12 @@ function App() {
             path="/"
             render={() => (
               <React.Fragment>
-                {/* <SingleDragonPage /> */}
+                <SingleDragonPage match={params} />
                 <DragonsList />
               </React.Fragment>
             )}
           />
+          5e9d058759b1ff74a7ad5f8f
           <Route exact path="/dragons/:dragonId" component={SingleDragonPage} />
           <Redirect to="/" />
         </Switch>

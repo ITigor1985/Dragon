@@ -37,7 +37,7 @@ export const SingleDragonPage = ({ match }) => {
   }
 
   return (
-    <section className="posts-list">
+    <section className="singl-dragon">
       <h2>Dragon</h2>
       {content}
     </section>
