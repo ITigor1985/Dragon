@@ -1,68 +1,39 @@
 import { Spinner } from "../../components/Spinner";
 import { useGetDragonQuery } from "../api/apiSlice";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
-let DragonExcerpt = ({ dragon }) => {
-  return (
-    <article className="dragon-excerpt">
-      <div>
-        <img
-          src={dragon.flickr_images[0]}
-          alt="dragon 1"
-          width="500"
-          height="500"
-        />
-      </div>
-      <div>
-        <img
-          src={dragon.flickr_images[1]}
-          alt="dragon 1"
-          width="500"
-          height="500"
-        />
-      </div>
-      <div>
-        <img
-          src={dragon.flickr_images[2]}
-          alt="dragon 1"
-          width="500"
-          height="500"
-        />
-      </div>
-      <div>
-        <img
-          src={dragon.flickr_images[3]}
-          alt="dragon 1"
-          width="500"
-          height="500"
-        />
-      </div>
-      <p>{dragon.name}</p>
-      <p>{dragon.description}</p>
-      <a href={dragon.wikipedia}>{dragon.wikipedia}</a>
-      <p>{dragon.height_w_trunk.meters}</p>
-      <p>{dragon.dry_mass_kg}</p>
-      <p>{dragon.first_flight}</p>
-    </article>
-  );
-};
+export const SingleDragonPage = ({ match }) => {
+  const { dragonId } = match.params;
 
-export const SingleDragonPage = () => {
-  const {
-    data: dragon,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetDragonQuery();
+  const { data: dragon, isFetching, isSuccess } = useGetDragonQuery(dragonId);
 
   let content;
-
-  if (isLoading) {
+  if (isFetching) {
     content = <Spinner text="Loading..." />;
   } else if (isSuccess) {
-    content = <DragonExcerpt dragon={dragon} />;
-  } else if (isError) {
-    content = <div>{error.toString()}</div>;
+    content = (
+      <article className="dragon-excerpt" style={{ display: "flex" }}>
+        <Carousel showThumbs={false}>
+          {dragon.flickr_images.map((image) => {
+            return (
+              <div key={image}>
+                <img src={image} alt="dragon" width={500} height={500} />
+              </div>
+            );
+          })}
+        </Carousel>
+
+        <div style={{ marginLeft: "20px" }}>
+          <p>{dragon.name}</p>
+          <p>{dragon.description}</p>
+          <a href={dragon.wikipedia}>{dragon.wikipedia}</a>
+          <p>{dragon.height_w_trunk.meters}</p>
+          <p>{dragon.dry_mass_kg}</p>
+          <p>{dragon.first_flight}</p>
+        </div>
+      </article>
+    );
   }
 
   return (

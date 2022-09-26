@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { DragonsList } from "./features/dragons/DragonsList";
 
 import { SingleDragonPage } from "./features/dragons/SingleDragonPage";
 
@@ -18,10 +19,12 @@ function App() {
             path="/"
             render={() => (
               <React.Fragment>
-                <SingleDragonPage />
+                {/* <SingleDragonPage /> */}
+                <DragonsList />
               </React.Fragment>
             )}
           />
+          <Route exact path="/dragons/:dragonId" component={SingleDragonPage} />
           <Redirect to="/" />
         </Switch>
       </div>

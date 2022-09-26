@@ -4,10 +4,13 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.spacexdata.com/v4" }),
   endpoints: (builder) => ({
+    getDragons: builder.query({
+      query: () => "/dragons",
+    }),
     getDragon: builder.query({
-      query: () => "/dragons/5e9d058759b1ff74a7ad5f8f",
+      query: (dragonId) => `/dragons/${dragonId}`,
     }),
   }),
 });
 
-export const { useGetDragonQuery } = apiSlice;
+export const { useGetDragonQuery, useGetDragonsQuery } = apiSlice;
