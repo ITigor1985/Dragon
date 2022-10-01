@@ -1,4 +1,4 @@
-import { Spinner } from "../../components/Spinner";
+import { Spinner } from "../../components/spinner/Spinner";
 import { useGetDragonQuery } from "../api/apiSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
