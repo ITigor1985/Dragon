@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     grid-template-rows: none;
     grid-template-columns: repeat(2, 1fr);
     background-color: black;
-    
+    gap: 40px;
     padding: 20px;
   `)};
 `;

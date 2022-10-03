@@ -1,9 +1,14 @@
 import { css } from "@emotion/react";
+import nebo from "../images/nebo.jpg";
 
 export const GlobalStyles = () => css`
   *::before,
   *::after {
     box-sizing: inherit;
+  }
+
+  body {
+    background-image: url(${nebo});
   }
 
   h1,
