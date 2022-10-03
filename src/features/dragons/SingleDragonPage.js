@@ -18,7 +18,7 @@ export const SingleDragonPage = ({ match }) => {
           {dragon.flickr_images.map((image) => {
             return (
               <div key={image}>
-                <img src={image} alt="dragon" width={500} height={500} />
+                <img src={image} alt="dragon" />
               </div>
             );
           })}

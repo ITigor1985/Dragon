@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Global } from "@emotion/react";
 import { useDispatch } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -14,6 +15,7 @@ import { DragonsList } from "./features/dragons/DragonsList";
 import { SingleDragonPage } from "./features/dragons/SingleDragonPage";
 import LoginView from "./features/login/LoginView";
 import RegisterView from "./features/register/RegisterView";
+import { GlobalStyles } from "./styles/GlobalStyles";
 
 const params = { params: { dragonId: "5e9d058759b1ff74a7ad5f8f" } };
 
@@ -27,6 +29,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Global styles={GlobalStyles} />
         <Container>
           <AppBar />
           <Switch>
