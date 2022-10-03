@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { authOperations } from "./app/auth";
 import AppBar from "./components/appBar/AppBar";
+import { Container } from "./components/container/Container";
 import { DragonsList } from "./features/dragons/DragonsList";
 
 import { SingleDragonPage } from "./features/dragons/SingleDragonPage";
@@ -26,24 +27,30 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <AppBar />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <React.Fragment>
-                <SingleDragonPage match={params} />
-                <DragonsList />
-              </React.Fragment>
-            )}
-          />
+        <Container>
+          <AppBar />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <React.Fragment>
+                  <SingleDragonPage match={params} />
+                  <DragonsList />
+                </React.Fragment>
+              )}
+            />
 
-          <Route exact path="/dragons/:dragonId" component={SingleDragonPage} />
-          <Route path="/register" component={RegisterView} />
-          <Route path="/login" component={LoginView} />
-          <Redirect to="/" />
-        </Switch>
+            <Route
+              exact
+              path="/dragons/:dragonId"
+              component={SingleDragonPage}
+            />
+            <Route path="/register" component={RegisterView} />
+            <Route path="/login" component={LoginView} />
+            <Redirect to="/" />
+          </Switch>
+        </Container>
       </div>
     </Router>
   );
