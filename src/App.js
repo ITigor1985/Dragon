@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
+import { authOperations } from "./app/auth";
 import AppBar from "./components/appBar/AppBar";
 import { DragonsList } from "./features/dragons/DragonsList";
 
@@ -15,6 +17,12 @@ import RegisterView from "./features/register/RegisterView";
 const params = { params: { dragonId: "5e9d058759b1ff74a7ad5f8f" } };
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <Router>
       <div className="App">

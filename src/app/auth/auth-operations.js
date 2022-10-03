@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://lpj-tasker.herokuapp.com";
+axios.defaults.baseURL = "http://localhost:4000/api";
 
 const token = {
   set(token) {
@@ -19,8 +19,8 @@ const token = {
  */
 const register = createAsyncThunk("auth/register", async (credentials) => {
   try {
-    const { data } = await axios.post("/users/signup", credentials);
-    token.set(data.token);
+    const { data } = await axios.post("/auth/register", credentials);
+    //token.set(data.token);
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
@@ -34,7 +34,7 @@ const register = createAsyncThunk("auth/register", async (credentials) => {
  */
 const logIn = createAsyncThunk("auth/login", async (credentials) => {
   try {
-    const { data } = await axios.post("/users/login", credentials);
+    const { data } = await axios.post("/auth/login", credentials);
     token.set(data.token);
     return data;
   } catch (error) {
@@ -49,7 +49,7 @@ const logIn = createAsyncThunk("auth/login", async (credentials) => {
  */
 const logOut = createAsyncThunk("auth/logout", async () => {
   try {
-    await axios.post("/users/logout");
+    await axios.post("/auth/logout");
     token.unset();
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
@@ -78,6 +78,7 @@ const fetchCurrentUser = createAsyncThunk(
     token.set(persistedToken);
     try {
       const { data } = await axios.get("/users/current");
+      console.log(data);
       return data;
     } catch (error) {}
   }
