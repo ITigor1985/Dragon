@@ -26,6 +26,9 @@ export const GlobalStyles = () => css`
     display: block;
     max-width: 100%;
     height: auto;
+    max-width: 100%; /* Максимальная ширина картинки */
+    min-height: 100%; /* Минимальная высота картинки */
+    object-fit: cover; /* Всю, выше указанную, облась заполнить картинкой */
   }
 
   ul,
@@ -45,6 +48,10 @@ export const GlobalStyles = () => css`
   a {
     text-decoration: none;
     outline: none;
+    color: white;
+    &:hover {
+      color: #4a9ee8;
+    }
   }
 
   button {

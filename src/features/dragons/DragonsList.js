@@ -4,8 +4,8 @@ import { useGetDragonsQuery } from "../api/apiSlice";
 
 let DragonExcerpt = ({ dragon }) => {
   return (
-    <article className="post-excerpt" key={dragon.id}>
-      <Link to={`/dragons/${dragon.id}`} className="button muted-button">
+    <article key={dragon.id}>
+      <Link to={`/dragons/${dragon.id}`}>
         <h3>{dragon.name}</h3>
       </Link>
     </article>
@@ -34,7 +34,7 @@ export const DragonsList = () => {
   }
 
   return (
-    <section className="dragons-list">
+    <section>
       <h2>Dragons</h2>
       {content}
     </section>

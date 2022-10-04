@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { mediaTablet } from "../../functions";
+import { mediaDesktop, mediaTablet } from "../../functions";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -16,4 +16,18 @@ export const Wrapper = styled.div`
     gap: 40px;
     padding: 20px;
   `)};
+`;
+
+export const WrapperDatails = styled.div`
+  * {
+    margin-bottom: 10px;
+    ${mediaTablet(`
+    margin-bottom: 15px;
+    font-size:16px;
+  `)};
+    ${mediaDesktop(`
+    margin-bottom: 20px;
+    font-size:20px;
+  `)};
+  }
 `;

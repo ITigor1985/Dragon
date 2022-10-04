@@ -5,11 +5,13 @@ import { authOperations } from "../../app/auth";
 const styles = {
   form: {
     width: 320,
+    margin: "0 auto",
   },
   label: {
     display: "flex",
     flexDirection: "column",
     marginBottom: 15,
+    color: "white",
   },
 };
 

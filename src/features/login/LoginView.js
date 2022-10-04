@@ -4,12 +4,14 @@ import { authOperations } from "../../app/auth";
 
 const styles = {
   form: {
+    margin: "0 auto",
     width: 320,
   },
   label: {
     display: "flex",
     flexDirection: "column",
     marginBottom: 15,
+    color: "white",
   },
 };
 
