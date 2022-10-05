@@ -1,21 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../app/auth";
+import {
+  BtnSubmit,
+  Form,
+  Label,
+  MyInput,
+} from "../../styles/components/Form/Form.styled";
 
-const styles = {
-  form: {
-    width: 320,
-    margin: "0 auto",
-  },
-  label: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: 15,
-    color: "white",
-  },
-};
-
-export default function RegisterView() {
+export const RegisterView = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -46,34 +39,39 @@ export default function RegisterView() {
     <div>
       <h1>Страница регистрации</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Label>
           Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
+          <MyInput
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
+        </Label>
 
-        <label style={styles.label}>
+        <Label>
           Почта
-          <input
+          <MyInput
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
           />
-        </label>
+        </Label>
 
-        <label style={styles.label}>
+        <Label>
           Пароль
-          <input
+          <MyInput
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
           />
-        </label>
+        </Label>
 
-        <button type="submit">Зарегистрироваться</button>
-      </form>
+        <BtnSubmit type="submit">Зарегистрироваться</BtnSubmit>
+      </Form>
     </div>
   );
-}
+};

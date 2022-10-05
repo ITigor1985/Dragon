@@ -16,7 +16,7 @@ import { Container } from "./components/container";
 import { DragonsList } from "./components/dragons";
 import { SingleDragonPage } from "./components/dragons";
 import { LoginView } from "./components/login";
-import RegisterView from "./components/register/RegisterView";
+import { RegisterView } from "./components/register";
 
 const params = { params: { dragonId: "5e9d058759b1ff74a7ad5f8f" } };
 

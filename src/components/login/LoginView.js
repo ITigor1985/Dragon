@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../app/auth";
-import { Form, Label } from "./LoginView.styled";
+import {
+  BtnSubmit,
+  Form,
+  Label,
+  MyInput,
+} from "../../styles/components/Form/Form.styled";
 
 export const LoginView = () => {
   const dispatch = useDispatch();
@@ -33,7 +38,7 @@ export const LoginView = () => {
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Label>
           Почта
-          <input
+          <MyInput
             type="email"
             name="email"
             value={email}
@@ -43,7 +48,7 @@ export const LoginView = () => {
 
         <Label>
           Пароль
-          <input
+          <MyInput
             type="password"
             name="password"
             value={password}
@@ -51,7 +56,7 @@ export const LoginView = () => {
           />
         </Label>
 
-        <button type="submit">Войти</button>
+        <BtnSubmit type="submit">Войти</BtnSubmit>
       </Form>
     </div>
   );
