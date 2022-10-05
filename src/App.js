@@ -28,7 +28,7 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div>
         <Global styles={GlobalStyles} />
         <Container>
           <AppBar />

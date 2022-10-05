@@ -3,11 +3,11 @@ import styled from "@emotion/styled";
 import { mediaTablet, mediaDesktop } from "../../functions/media";
 
 export const ContainerBody = styled.div`
-  max-width: 320px;
-  padding: 0 20px;
+  min-width: 320px;
   margin: 0 auto;
+  max-width: 370px;
 
-  ${mediaTablet(`max-width: 768px;
+  ${mediaTablet(`min-width: 768px;
   padding: 0 32px;
   
   `)}

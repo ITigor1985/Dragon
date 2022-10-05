@@ -9,6 +9,7 @@ export const GlobalStyles = () => css`
 
   body {
     background-image: url(${nebo});
+    margin: 0;
   }
 
   h1,

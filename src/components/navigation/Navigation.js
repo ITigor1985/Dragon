@@ -8,6 +8,7 @@ const styles = {
     padding: 12,
     fontWeight: 700,
     color: "white",
+    fontSize: 20,
   },
   activeLink: {
     color: "#E84A5F",

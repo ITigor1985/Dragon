@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
 import { Spinner } from "../../components/spinner/Spinner";
 import { useGetDragonsQuery } from "../api/apiSlice";
+import { ImgWrapper, WrapperDragonsList } from "./DragonList.styled";
 
 let DragonExcerpt = ({ dragon }) => {
   return (
-    <article key={dragon.id}>
+    <WrapperDragonsList>
+      <ImgWrapper>
+        <img src={dragon.flickr_images[0]} alt="dragon" />
+      </ImgWrapper>
       <Link to={`/dragons/${dragon.id}`}>
         <h3>{dragon.name}</h3>
       </Link>
-    </article>
+    </WrapperDragonsList>
   );
 };
 
@@ -35,7 +39,16 @@ export const DragonsList = () => {
 
   return (
     <section>
-      <h2>Dragons</h2>
+      <h2
+        style={{
+          color: "white",
+          textAlign: "center",
+          padding: "20px",
+          fontSize: "40px",
+        }}
+      >
+        Dragons List
+      </h2>
       {content}
     </section>
   );

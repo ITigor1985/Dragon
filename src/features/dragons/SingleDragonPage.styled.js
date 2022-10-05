@@ -3,18 +3,20 @@ import { mediaDesktop, mediaTablet } from "../../functions";
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1);
   gap: 20px;
-  padding: 15px;
+  padding: 10px;
   color: white;
-  background-color: black;
 
   ${mediaTablet(`
     grid-template-rows: none;
-    grid-template-columns: repeat(2, 1fr);
-    background-color: black;
+    grid-template-columns: repeat(2, 1);
+    
     gap: 40px;
     padding: 20px;
+  `)};
+  ${mediaDesktop(`
+    grid-template-columns: repeat(2, 1fr);
   `)};
 `;
 
