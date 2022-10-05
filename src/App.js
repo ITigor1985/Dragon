@@ -8,14 +8,15 @@ import {
   Redirect,
 } from "react-router-dom";
 import { authOperations } from "./app/auth";
-import { AppBar } from "./components/appBar";
-import { Container } from "./components/container/Container";
-import { DragonsList } from "./components/dragons/DragonsList";
 
-import { SingleDragonPage } from "./components/dragons/SingleDragonPage";
-import LoginView from "./components/login/LoginView";
-import RegisterView from "./components/register/RegisterView";
 import { GlobalStyles } from "./styles/GlobalStyles";
+
+import { AppBar } from "./components/appBar";
+import { Container } from "./components/container";
+import { DragonsList } from "./components/dragons";
+import { SingleDragonPage } from "./components/dragons";
+import { LoginView } from "./components/login";
+import RegisterView from "./components/register/RegisterView";
 
 const params = { params: { dragonId: "5e9d058759b1ff74a7ad5f8f" } };
 

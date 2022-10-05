@@ -7,8 +7,7 @@ export const ContainerBody = styled.div`
   margin: 0 auto;
   max-width: 420px;
 
-  ${mediaTablet(`min-width: 768px;
-  
+  ${mediaTablet(`min-width: 768px; 
   
   `)}
 
