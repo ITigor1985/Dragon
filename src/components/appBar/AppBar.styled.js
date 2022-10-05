@@ -6,4 +6,6 @@ export const AppBarHeader = styled.header`
   align-items: center;
   border-bottom: 2px solid white;
   margin-bottom: 40px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 `;

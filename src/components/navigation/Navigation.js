@@ -1,35 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavigationLink } from "./Navigation.styled";
 
-const styles = {
-  link: {
-    display: "inline-block",
-    textDecoration: "none",
-    padding: 12,
-    fontWeight: 700,
-    color: "white",
-    fontSize: 20,
-  },
-  activeLink: {
-    color: "#E84A5F",
-  },
-};
-
-const Navigation = () => (
+export const Navigation = () => (
   <nav>
-    <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
+    <NavigationLink to="/" exact activeClassName="active">
       Главная
-    </NavLink>
+    </NavigationLink>
 
-    {/* <NavLink
-      to="/todos"
-      exact
-      style={styles.link}
-      activeStyle={styles.activeLink}
+    {/* <NavigationLink
+      to="/favorites"
+      exact      
+      activeClassName="active"
     >
-      Заметки
-    </NavLink> */}
+      Избранное
+    </NavigationLink> */}
   </nav>
 );
-
-export default Navigation;

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { mediaTablet } from "../../functions";
 
-export const AuthNavLink = styled(NavLink)`
+export const NavigationLink = styled(NavLink)`
   display: "inline-block";
   text-decoration: "none";
   padding: 12px;
