@@ -4,10 +4,10 @@ const { dragons: ctrl } = require("../../controllers");
 
 const router = express.Router();
 
-router.get("/", auth, ctrlWrapper(ctrl.getAll));
+router.get("/favorites", auth, ctrlWrapper(ctrl.getAll));
 
-router.post("/", auth, ctrl.add);
+router.post("/add", auth, ctrl.add);
 
-router.delete("/:dragonId", ctrlWrapper(ctrl.removeById));
+router.delete("/remove/:dragonId", ctrlWrapper(ctrl.removeById));
 
 module.exports = router;

@@ -8,4 +8,5 @@ export const Container = styled.div`
 export const Name = styled.span`
   font-weight: 700;
   margin-right: 12px;
+  color: white;
 `;
