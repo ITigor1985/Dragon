@@ -5,10 +5,10 @@ import { mediaTablet, mediaDesktop } from "../../functions/media";
 export const ContainerBody = styled.div`
   min-width: 320px;
   margin: 0 auto;
-  max-width: 370px;
+  max-width: 420px;
 
   ${mediaTablet(`min-width: 768px;
-  padding: 0 32px;
+  
   
   `)}
 

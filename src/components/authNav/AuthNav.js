@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthNavLink } from "./AuthNav.styled";
 
-export default function AuthNav() {
+export const AuthNav = () => {
   return (
     <div>
       <AuthNavLink to="/register" exact activeClassName="active">
@@ -12,4 +12,4 @@ export default function AuthNav() {
       </AuthNavLink>
     </div>
   );
-}
+};

@@ -1,25 +1,16 @@
 import { useSelector } from "react-redux";
 import UserMenu from "../userMenu/UserMenu";
-import AuthNav from "../authNav/AuthNav";
+import { AuthNav } from "../authNav";
 import { authSelectors } from "../../app/auth";
 import Navigation from "../navigation/Navigation";
+import { AppBarHeader } from "./AppBar.styled";
 
-const styles = {
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    borderBottom: "2px solid white",
-    marginBottom: "40px",
-  },
-};
-
-export default function AppBar() {
+export const AppBar = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <header style={styles.header}>
+    <AppBarHeader>
       <Navigation />
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    </header>
+    </AppBarHeader>
   );
-}
+};

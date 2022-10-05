@@ -1,5 +1,5 @@
-import { Spinner } from "../../components/spinner/Spinner";
-import { useGetDragonQuery } from "../api/apiSlice";
+import { Spinner } from "../spinner/Spinner";
+import { useGetDragonQuery } from "../../app/dragon/apiSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Wrapper, WrapperDatails } from "./SingleDragonPage.styled";

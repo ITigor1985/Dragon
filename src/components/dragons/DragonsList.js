@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Spinner } from "../../components/spinner/Spinner";
-import { useGetDragonsQuery } from "../api/apiSlice";
+import { Spinner } from "../spinner/Spinner";
+import { useGetDragonsQuery } from "../../app/dragon/apiSlice";
 import { ImgWrapper, WrapperDragonsList } from "./DragonList.styled";
 
 let DragonExcerpt = ({ dragon }) => {

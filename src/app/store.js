@@ -11,8 +11,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth";
-
-import { apiSlice } from "../features/api/apiSlice";
+import { apiSlice } from "./dragon/apiSlice";
 
 const middleware = [
   ...getDefaultMiddleware({
