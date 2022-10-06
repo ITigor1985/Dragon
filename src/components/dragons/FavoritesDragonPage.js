@@ -3,11 +3,16 @@ import { Spinner } from "../spinner/Spinner";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Wrapper, WrapperDatails } from "./SingleDragonPage.styled";
-import { useGetFavoritesDragonsQuery } from "../../app/favoritesDragons/apiFavoritesDragonsSlice";
+import {
+  useDeleteDragonMutation,
+  useGetFavoritesDragonsQuery,
+} from "../../app/favoritesDragons/apiFavoritesDragonsSlice";
 import { WrapperDragonsList } from "./DragonList.styled";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 let DragonExcerpt = ({ dragon }) => {
+  const [deleteDragon, { isLoading: isDeleting }] = useDeleteDragonMutation();
+  console.log(useDeleteDragonMutation());
   return (
     <WrapperDragonsList>
       {/* <ImgWrapper>
@@ -16,6 +21,13 @@ let DragonExcerpt = ({ dragon }) => {
       <Link to={`/dragons/${dragon.id}`}>
         <h3>{dragon.name}</h3>
       </Link>
+      <button
+        type="button"
+        onClick={() => deleteDragon(dragon._id)}
+        disabled={isDeleting}
+      >
+        delete
+      </button>
     </WrapperDragonsList>
   );
 };

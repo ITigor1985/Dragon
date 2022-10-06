@@ -56,16 +56,16 @@ export const dragonsApi = createApi({
     // In this case, `getPost` will be re-run. `getPosts` *might*  rerun, if this id was under its results.
     //   invalidatesTags: (result, error, { id }) => [{ type: "Posts", id }],
     // }),
-    // deletePost: build.mutation({
-    //   query(id) {
-    //     return {
-    //       url: `post/${id}`,
-    //       method: "DELETE",
-    //     };
-    //   },
-    //   // Invalidates all queries that subscribe to this Post `id` only.
-    //   invalidatesTags: (result, error, id) => [{ type: "Posts", id }],
-    // }),
+    deleteDragon: build.mutation({
+      query(id) {
+        return {
+          url: `/dragons/remove/${id}`,
+          method: "DELETE",
+        };
+      },
+      // Invalidates all queries that subscribe to this Post `id` only.
+      invalidatesTags: (result, error, id) => [{ type: "Dragons", id }],
+    }),
   }),
 });
 
@@ -74,5 +74,5 @@ export const {
   useAddDragonMutation,
   //useGetPostQuery,
   //useUpdatePostMutation,
-  //useDeletePostMutation,
+  useDeleteDragonMutation,
 } = dragonsApi;
