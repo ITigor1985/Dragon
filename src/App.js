@@ -13,7 +13,7 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 
 import { AppBar } from "./components/appBar";
 import { Container } from "./components/container";
-import { DragonsList } from "./components/dragons";
+import { DragonsList, FavoritesDragonPage } from "./components/dragons";
 import { SingleDragonPage } from "./components/dragons";
 import { LoginView } from "./components/login";
 import { RegisterView } from "./components/register";
@@ -49,6 +49,11 @@ function App() {
               exact
               path="/dragons/:dragonId"
               component={SingleDragonPage}
+            />
+            <Route
+              exact
+              path="/api/dragons/favorites"
+              component={FavoritesDragonPage}
             />
             <Route path="/register" component={RegisterView} />
             <Route path="/login" component={LoginView} />

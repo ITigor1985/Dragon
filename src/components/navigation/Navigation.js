@@ -7,12 +7,8 @@ export const Navigation = () => (
       Главная
     </NavigationLink>
 
-    {/* <NavigationLink
-      to="/favorites"
-      exact      
-      activeClassName="active"
-    >
+    <NavigationLink to="/api/dragons/favorites" exact activeClassName="active">
       Избранное
-    </NavigationLink> */}
+    </NavigationLink>
   </nav>
 );
