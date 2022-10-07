@@ -35,27 +35,8 @@ export const dragonsApi = createApi({
           body,
         };
       },
-      // Invalidates all Post-type queries providing the `LIST` id - after all, depending of the sort order,
-      // that newly created post could show up in any lists.
       invalidatesTags: [{ type: "Dragons", id: "LIST" }],
     }),
-    // getPost: build.query({
-    //   query: (id) => `post/${id}`,
-    //   providesTags: (result, error, id) => [{ type: "Posts", id }],
-    // }),
-    // updatePost: build.mutation({
-    //   query(data) {
-    //     const { id, ...body } = data;
-    //     return {
-    //       url: `post/${id}`,
-    //       method: "PUT",
-    //       body,
-    //     };
-    //   },
-    // Invalidates all queries that subscribe to this Post `id` only.
-    // In this case, `getPost` will be re-run. `getPosts` *might*  rerun, if this id was under its results.
-    //   invalidatesTags: (result, error, { id }) => [{ type: "Posts", id }],
-    // }),
     deleteDragon: build.mutation({
       query(id) {
         return {
@@ -63,7 +44,6 @@ export const dragonsApi = createApi({
           method: "DELETE",
         };
       },
-      // Invalidates all queries that subscribe to this Post `id` only.
       invalidatesTags: (result, error, id) => [{ type: "Dragons", id }],
     }),
   }),
@@ -72,7 +52,5 @@ export const dragonsApi = createApi({
 export const {
   useGetFavoritesDragonsQuery,
   useAddDragonMutation,
-  //useGetPostQuery,
-  //useUpdatePostMutation,
   useDeleteDragonMutation,
 } = dragonsApi;
