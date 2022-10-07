@@ -3,7 +3,10 @@ import { useGetDragonQuery } from "../../app/dragon/apiSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Wrapper, WrapperDatails } from "./SingleDragonPage.styled";
-import { useAddDragonMutation } from "../../app/favoritesDragons/apiFavoritesDragonsSlice";
+import {
+  useAddDragonMutation,
+  useGetFavoritesDragonsQuery,
+} from "../../app/favoritesDragons/apiFavoritesDragonsSlice";
 import { useLocation } from "react-router-dom";
 
 export const SingleDragonPage = ({ match }) => {
@@ -11,10 +14,19 @@ export const SingleDragonPage = ({ match }) => {
   let location = useLocation();
 
   const { data: dragon, isFetching, isSuccess } = useGetDragonQuery(dragonId);
-  const [addDragon, { isLoading }] = useAddDragonMutation();
+  const { data: dragons } = useGetFavoritesDragonsQuery();
+  const [addDragon] = useAddDragonMutation();
 
-  const handleSubmit = (name, id) => {
-    addDragon({ name, id });
+  const handleSubmit = (name, number) => {
+    const isNameInDragons = dragons.data.find(
+      (drag) => drag.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isNameInDragons) {
+      alert("is already in favorites");
+      return;
+    }
+    addDragon({ name, number });
+    alert("add to favorites");
   };
 
   let content;
@@ -43,7 +55,7 @@ export const SingleDragonPage = ({ match }) => {
               type="button"
               onClick={() => handleSubmit(dragon.name, dragon.id)}
             >
-              add
+              add to favorites
             </button>
           )}
         </WrapperDatails>

@@ -28,7 +28,6 @@ export const dragonsApi = createApi({
     }),
     addDragon: build.mutation({
       query(body) {
-        console.log(body);
         return {
           url: `/dragons/add`,
           method: "POST",

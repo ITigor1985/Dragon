@@ -5,9 +5,12 @@ const dragonSchema = Schema(
     name: {
       type: String,
     },
-    id: {
+    number: {
       type: String,
-      unique: true,
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
     },
   },
   { versionKey: false, timestamps: true }

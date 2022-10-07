@@ -20,7 +20,7 @@ const token = {
 const register = createAsyncThunk("auth/register", async (credentials) => {
   try {
     const { data } = await axios.post("/auth/register", credentials);
-    //token.set(data.token);
+    token.set(data.token);
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message

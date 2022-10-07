@@ -19,7 +19,7 @@ let DragonExcerpt = ({ dragon, refetch }) => {
 
   return (
     <WrapperDragonsList>
-      <Link to={`/dragons/${dragon.id}`}>
+      <Link to={`/dragons/${dragon.number}`}>
         <h3>{dragon.name}</h3>
       </Link>
       <button type="button" onClick={() => onDeleteHandler(dragon._id)}>
@@ -36,14 +36,16 @@ export const FavoritesDragonPage = () => {
     isSuccess,
     refetch,
   } = useGetFavoritesDragonsQuery();
-
   let content;
+
   if (isFetching) {
     content = <Spinner text="Loading..." />;
   } else if (isSuccess) {
-    content = dragons.data.map((dragon) => (
-      <DragonExcerpt key={dragon._id} dragon={dragon} refetch={refetch} />
-    ));
+    dragons
+      ? (content = dragons.data.map((dragon) => (
+          <DragonExcerpt key={dragon._id} dragon={dragon} refetch={refetch} />
+        )))
+      : refetch();
   }
 
   return <section className="singl-dragon">{content}</section>;
