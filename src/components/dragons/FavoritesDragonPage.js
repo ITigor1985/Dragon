@@ -9,10 +9,10 @@ import {
 } from "../../app/favoritesDragons/apiFavoritesDragonsSlice";
 import { WrapperDragonsList } from "./DragonList.styled";
 import { Link, Redirect } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-let DragonExcerpt = ({ dragon }) => {
-  const [deleteDragon, { isLoading: isDeleting }] = useDeleteDragonMutation();
-  console.log(useDeleteDragonMutation());
+let DragonExcerpt = ({ dragon, deleteDragon, isDeleting }) => {
   return (
     <WrapperDragonsList>
       {/* <ImgWrapper>
@@ -26,24 +26,31 @@ let DragonExcerpt = ({ dragon }) => {
         onClick={() => deleteDragon(dragon._id)}
         disabled={isDeleting}
       >
-        delete
+        {isDeleting ? "Deleting..." : "Delete"}
       </button>
     </WrapperDragonsList>
   );
 };
 
 export const FavoritesDragonPage = () => {
+  console.log(useSelector());
   const {
     data: dragons,
     isFetching,
     isSuccess,
   } = useGetFavoritesDragonsQuery();
+  const [deleteDragon, { isLoading: isDeleting }] = useDeleteDragonMutation();
   let content;
   if (isFetching) {
     content = <Spinner text="Loading..." />;
   } else if (isSuccess) {
     content = dragons.data.map((dragon) => (
-      <DragonExcerpt key={dragon._id} dragon={dragon} />
+      <DragonExcerpt
+        key={dragon._id}
+        dragon={dragon}
+        deleteDragon={deleteDragon}
+        isDeleting={isDeleting}
+      />
     ));
   }
 

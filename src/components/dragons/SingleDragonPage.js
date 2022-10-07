@@ -4,9 +4,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import { Wrapper, WrapperDatails } from "./SingleDragonPage.styled";
 import { useAddDragonMutation } from "../../app/favoritesDragons/apiFavoritesDragonsSlice";
+import { useLocation } from "react-router-dom";
 
 export const SingleDragonPage = ({ match }) => {
   const { dragonId } = match.params;
+  let location = useLocation();
 
   const { data: dragon, isFetching, isSuccess } = useGetDragonQuery(dragonId);
   const [addDragon, { isLoading }] = useAddDragonMutation();
@@ -36,12 +38,14 @@ export const SingleDragonPage = ({ match }) => {
           <p>Height: {dragon.height_w_trunk.meters} m</p>
           <p>Weight: {dragon.dry_mass_kg} kg</p>
           <p>First flight: {dragon.first_flight}</p>
-          <button
-            type="button"
-            onClick={() => handleSubmit(dragon.name, dragon.id)}
-          >
-            add
-          </button>
+          {location.pathname !== "/" && (
+            <button
+              type="button"
+              onClick={() => handleSubmit(dragon.name, dragon.id)}
+            >
+              add
+            </button>
+          )}
         </WrapperDatails>
       </Wrapper>
     );
