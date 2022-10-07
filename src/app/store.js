@@ -15,14 +15,6 @@ import { authReducer } from "./auth";
 import { apiSlice } from "./dragon/apiSlice";
 import { dragonsApi } from "./favoritesDragons/apiFavoritesDragonsSlice";
 
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }).concat(apiSlice.middleware, dragonsApi.middleware),
-// ];
-
 const authPersistConfig = {
   key: "auth",
   storage,
@@ -50,6 +42,3 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 export const persistor = persistStore(store);
-
-// : (getDefaultMiddleware) =>
-//     getDefaultMiddleware().concat(apiSlice.middleware),
