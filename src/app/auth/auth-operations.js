@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "http://localhost:4000/api";
+axios.defaults.baseURL = "https://dragons-server.herokuapp.com/api";
 
 const token = {
   set(token) {
@@ -15,7 +15,7 @@ const token = {
 const register = createAsyncThunk("auth/register", async (credentials) => {
   try {
     const { data } = await axios.post("/auth/register", credentials);
-    token.set(data.token);
+
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
