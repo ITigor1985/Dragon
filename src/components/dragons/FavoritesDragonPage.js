@@ -8,7 +8,6 @@ import { WrapperDragonsList } from "./DragonList.styled";
 import { Link } from "react-router-dom";
 
 let DragonExcerpt = ({ dragon, refetch }) => {
-  console.log(dragon);
   const [deleteDragon] = useDeleteDragonMutation();
 
   const onDeleteHandler = (id) => {
@@ -42,7 +41,6 @@ export const FavoritesDragonPage = () => {
   if (isFetching) {
     content = <Spinner text="Loading..." />;
   } else if (isSuccess) {
-    console.log(isSuccess);
     content = dragons.data.map((dragon) => (
       <DragonExcerpt key={dragon._id} dragon={dragon} refetch={refetch} />
     ));
