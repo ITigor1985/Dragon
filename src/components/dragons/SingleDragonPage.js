@@ -1,5 +1,6 @@
 import { Spinner } from "../spinner/Spinner";
 import { useGetDragonQuery } from "../../app/dragon/apiSlice";
+import { authSelectors } from "../../app/auth";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Wrapper, WrapperDatails } from "./SingleDragonPage.styled";
@@ -8,25 +9,29 @@ import {
   useGetFavoritesDragonsQuery,
 } from "../../app/favoritesDragons/apiFavoritesDragonsSlice";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const SingleDragonPage = ({ match }) => {
   const { dragonId } = match.params;
   let location = useLocation();
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const { data: dragon, isFetching, isSuccess } = useGetDragonQuery(dragonId);
   const { data: dragons } = useGetFavoritesDragonsQuery();
   const [addDragon] = useAddDragonMutation();
 
   const handleSubmit = (name, number) => {
-    const isNameInDragons = dragons.data.find(
-      (drag) => drag.name.toLowerCase() === name.toLowerCase()
-    );
-    if (isNameInDragons) {
-      alert("is already in favorites");
-      return;
+    if (isLoggedIn) {
+      const isNameInDragons = dragons.data.find(
+        (drag) => drag.name.toLowerCase() === name.toLowerCase()
+      );
+      if (isNameInDragons) {
+        alert("is already in favorites");
+        return;
+      }
+      addDragon({ name, number });
+      alert("add to favorites");
     }
-    addDragon({ name, number });
-    alert("add to favorites");
   };
 
   let content;
@@ -50,7 +55,7 @@ export const SingleDragonPage = ({ match }) => {
           <p>Height: {dragon.height_w_trunk.meters} m</p>
           <p>Weight: {dragon.dry_mass_kg} kg</p>
           <p>First flight: {dragon.first_flight}</p>
-          {location.pathname !== "/" && (
+          {isLoggedIn && location.pathname !== "/" && (
             <button
               type="button"
               onClick={() => handleSubmit(dragon.name, dragon.id)}
