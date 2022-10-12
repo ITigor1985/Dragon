@@ -35,7 +35,9 @@ export const FavoritesDragonPage = () => {
     isFetching,
     isSuccess,
     refetch,
-  } = useGetFavoritesDragonsQuery();
+  } = useGetFavoritesDragonsQuery("", {
+    refetchOnMountOrArgChange: true,
+  });
 
   let content;
   if (isFetching) {

@@ -17,21 +17,22 @@ export const SingleDragonPage = ({ match }) => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const { data: dragon, isFetching, isSuccess } = useGetDragonQuery(dragonId);
-  const { data: dragons } = useGetFavoritesDragonsQuery();
+  const { data: dragons } = useGetFavoritesDragonsQuery("", {
+    skip: isLoggedIn === false,
+    refetchOnMountOrArgChange: true,
+  });
   const [addDragon] = useAddDragonMutation();
 
   const handleSubmit = (name, number) => {
-    if (isLoggedIn) {
-      const isNameInDragons = dragons.data.find(
-        (drag) => drag.name.toLowerCase() === name.toLowerCase()
-      );
-      if (isNameInDragons) {
-        alert("is already in favorites");
-        return;
-      }
-      addDragon({ name, number });
-      alert("add to favorites");
+    const isNameInDragons = dragons.data.find(
+      (drag) => drag.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isNameInDragons) {
+      alert("is already in favorites");
+      return;
     }
+    addDragon({ name, number });
+    alert("add to favorites");
   };
 
   let content;
